@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Computing Notes
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./../../main.css">
+        
+        <script src="mathjax-config.js" defer></script>
+        <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    </head>
+
+    <body>
+        <h1>Propositional Logic Semantics</h1>
+
+        <h2>Definitions</h2>
+
+        <ul>
+            <li>
+                Situation - a situation in logic is something that determines truth values. In propositional logic, a situation is sim[ly an assignment of true (\(tt\)) and false (\(ff\)) values.
+            </li>
+
+            <li>
+                Atomic evaluation function - an atomic evaluation function is a situation in propositional logic. If \(A\) is a set of propositional atoms, an atomic evaluation function will be of the form \(u : A \rightarrow {tt, ff}\), i.e. it will map each propositional atom to either \(tt\) or \(ff\).
+            </li>
+            
+            <li>
+                Evauation function - if \(A\) is a set of propositional atoms and \(v\) is an atomic evaluation function for \(A\) then the evaluation function \(|...|_v\) assigns the truth values \(tt\) and \(ff\) to a formula by following these rules:
+
+                <ul>
+                    <li>
+                        If \(\phi \in A\) then \(|\phi| = v(\phi)\), i.e. \(|\phi| = tt\) if and only if \(v(\phi) = tt\).
+                    </li>
+
+                    <li>
+                        \(|¬\phi|_v = tt iff |\phi|_v = ff\).
+                    </li>
+
+                    <li>
+                        \(|\phi \wedge \psi|_v = tt iff |\phi|_v = tt\) and \(|\psi|_v = tt\).
+                    </li>
+
+                    <li>
+                        \(|\phi \vee \psi|_v = tt iff |\phi|_v = tt\) or \(|\psi|_v = tt\).
+                    </li>
+
+                    <li>
+                        \(|\phi \rightarrow \psi|_v = tt iff |¬\phi|_v = tt\) or \(|\psi|_v = tt\).
+                    </li>
+
+                    <li>
+                        \(|\phi \leftrightarrow \psi|_v = tt iff |\phi|_v = |\psi|_v\).
+                    </li>
+
+                    <li>
+                        \(|\bot|_v = ff\).
+                    </li>
+
+                    <li>
+                        \(|\top| = tt\).
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                Truth functionality - Boolean connectives are truth function in an evaluation function - this means that the truth-value of a formula is functionally determined by the truth-values of the connected subformulas.
+            </li>
+
+            <li>
+                Truth tables - truth tables are a way of evaluating logical formulas by considering the possible values of each propositional atom and evaluating the rest of the formula. The truth tables for the propositional Boolean connectives are shown below. Each row of a truth table represents one situation.
+
+                <table>
+                    <tr><td>\(\phi\)</td><td>\(\psi\)</td><td>\(\phi \wedge \psi\)</td><td>\(\phi \vee \psi\)</td><td>\(\phi \rightarrow \psi\)</td><td>\(\phi \leftrightarrow \psi\)</td></tr>
+                    <tr><td>tt</td><td>tt</td><td>tt</td><td>tt</td><td>tt</td><td>tt</td></tr>
+                    <tr><td>tt</td><td>ff</td><td>ff</td><td>tt</td><td>ff</td><td>ff</td></tr>
+                    <tr><td>ff</td><td>tt</td><td>ff</td><td>tt</td><td>tt</td><td>ff</td></tr>
+                    <tr><td>ff</td><td>ff</td><td>ff</td><td>ff</td><td>tt</td><td>tt</td></tr>
+                </table>
+
+                <br/>
+
+                <table>
+                    <tr><td>\(p\)</td><td>\(¬p\)</td></tr>
+                    <tr><td>tt</td><td>ff</td></tr>
+                    <tr><td>ff</td><td>tt</td></tr>
+                </table>
+
+                <br/>
+
+                <table>
+                    <tr><td>\(\top\)</td><td>\(\bot\)</td></tr>
+                    <tr><td>tt</td><td>ff</td></tr>
+                </table>
+            </li>
+
+            <li>
+                Truth table connectives - any truth table can defined a connective, although not all of them are given names. The Sheffer stroke, denoted \(\uparrow\) is similar to NAND in electronics. It has the following truth table:
+            
+                <table>
+                    <tr><td>\(\phi\)</td><td>\(\psi\)</td><td>\(\phi \uparrow \psi\)</td></tr>
+                    <tr><td>tt</td><td>tt</td><td>ff</td></tr>
+                    <tr><td>tt</td><td>ff</td><td>tt</td></tr>
+                    <tr><td>ff</td><td>tt</td><td>tt</td></tr>
+                    <tr><td>ff</td><td>ff</td><td>tt</td></tr>
+                </table>
+            </li>
+
+            <li>
+                Functional completeness - a set of Boolean connecives, \(C\) is functionally complete if any connective of any arity can be defined just in terms of the connectives in \(C\).
+
+                <ul>
+                    <li>E.g. the set \(\{\uparrow\}\) is functionally complete.</li>
+                    <li>E.g. the set \(\{¬, \wedge\}\) is functionally complete.</li>
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>

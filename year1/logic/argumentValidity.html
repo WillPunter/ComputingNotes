@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Computing Notes
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./../../main.css">
+        
+        <script src="mathjax-config.js" defer></script>
+        <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    </head>
+
+    <body>
+        <h1>Arguments and Validity in Propositional Logic</h1>
+
+        <ul>
+            <li>
+                Argument - an argument in propositional logic is a statement of the form "\(\phi_1, \phi_2, ..., \phi_n\) therefore \(\psi\)". This is often written with the double turnstile operator: \(\phi_1, \phi_2, ..., \phi_n \models \psi\).
+            </li>
+
+            <li>
+                Valid argument - an argument is propositionally valid if every situation in which \(\phi_1, \phi_2, ..., \phi_n\) is true, \(\psi\) is also true.
+            </li>
+
+            <li>
+                Valid formula - a formula is propositionally valid if it is true in every situation. Valid propositional formulas are often called "tautologies".
+            </li>
+
+            <li>
+                Satisfiable formula - a formula is satisfiable if it is true in at least one situation. A formula is called a contradiction if it is not satisfiable.
+            </li>
+
+            <li>
+               Equivalent formulas - two formulas are equivalent if they are true in exactly the same situations. 
+            </li>
+
+            <li>
+                Valid arguments, valid formulas, satisfiable formulas and equivalent formulas can all be written in terms of each other.
+
+                <ul>
+                    <li>If \(\phi \models \psi\) is a valid argument, then \(\phi \rightarrow \psi\) is a valid formula, \(\phi \rightarrow ¬\psi) is unsatisfiable and \(\phi \rightarrow \psi \equiv \top\).</li>
+                </ul>
+            </li>
+
+            <li>
+                Implication formula - for an argument \(\phi_1, \phi_2, ..., \phi_n \models \psi\), the corresponding implication formula is \(\phi_1 \wedge \phi_2 \wedge ... \phi_n \rightarrow \psi\). If an argument is valid, then the corresponding implication formula must be equivalent to \(\top\) and vice versa.
+            </li>
+
+            <li>
+                Checking an argument is propositionally valid - there are four ways to check if an argument is propositionally valid:
+
+                <ol>
+                    <li>Truth tables - if the conclusion is true in every row that the premise is true then the argument is valid.</li>
+                    <li>Direct argument - similar to mathematical proof.</li>
+                    <li>Equivalences - to show that an argument is valid, you can show that its implication formla is equivalent to \(\top\).</li>
+                    <li>Natural deduction - a way of reasoning about an argument algorithmically, using only syntactic rules. Other proof systems may be used, but we will only cover natrual deduction.</li>
+                </ol>
+            </li>
+
+            <li>
+                Checking an argument is propositionally valid using truth tables - we check if the concusion is true in every situation in which all of the premises are true.
+
+                <ul>
+                    <li>
+                        E.g. the argument \(p \rightarrow ¬q, q \models ¬p\). We get the following truth table:
+
+                        <table>
+                            <tr><td>\(p\)</td><td>\(q\)</td><td>\(¬q\)</td><td>\(p \rightarrow ¬q\)</td><td>\((p \rightarrow ¬q) \wedge q\)</td><td>\(¬p\)</td></tr>
+                            <tr><td>tt</td><td>tt</td><td>ff</td><td>ff</td><td>ff</td><td>ff</td></tr>
+                            <tr><td>tt</td><td>ff</td><td>tt</td><td>tt</td><td>ff</td><td>ff</td></tr>
+                            <tr><td>ff</td><td>tt</td><td>ff</td><td>tt</td><td>tt</td><td>tt</td></tr>
+                            <tr><td>ff</td><td>ff</td><td>tt</td><td>tt</td><td>ff</td><td>tt</td></tr>
+                        </table>
+
+                        <br/>
+
+                        We can see that whenever the premises are both true (the third row) the concusion is true, so the argument is valid.
+                    </li>
+
+                    <li>Alternatively, we can create the truth table for the implication formula. If the column representing the implification formula is true on every row (i.e. in every possible situation) then the formula is equivalent to \(\top\) and the implication formula and the argument are both vaid.</li>
+                </ul>
+            </li>
+
+            <li>
+                Pros of truth tables:
+
+                <ul>
+                    <li>Truth tables always work for propositional logic.</li>
+                    <li>They can be used to show satisfiability and equivalence as well as validity.</li>
+                    <li>They are easy to implement.</li>
+                </ul>
+            </li>
+            
+            <li>
+                Cons of truth tables:
+
+                <ul>
+                    <li>They are tedious and error-prone. They take a long time to generate.</li>
+                    <li>No efficient agloritm for determining satisfiability is known, and truth-table based algorithms are particularly inefficient.</li>
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>

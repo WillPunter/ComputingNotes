@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Computing Notes
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./../../main.css">
+        
+        <script src="mathjax-config.js" defer></script>
+        <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    </head>
+
+    <body>
+        <h1>Propositional Logic Translation</h1>
+
+        <ul>
+            <li>
+                Only some statements can be translated under propositional logic. Questions, commands and exclamations, for example, cannot be translated.
+            </li>
+
+            <li>
+                Translation with boolean connectives - Statements are translated based on their boolean connectives. Statements (i.e. expressions that are either true or false) without connectives are simply represented with propositional atoms.
+
+                <ul>
+                    <li>E.g. "the train is delayed and we don't have a car" can be translated as \(d \wedge ¬c\) where \(d\) is a propositional atom representing "the train is delayed" and \(c\) is a propositional atom representing "we have a car".</li>
+                </ul>
+            </li>
+
+            <li>
+                Rules for propositional logic translation - the following are general rules of thumb (not formally defined) for translating engish sentences into logic:
+
+                <ul>
+                    <li>
+                        "But", "although", "yet", "despite", and "though" translate to "and", e.g. "I will go out although it is raining" can be translated as \(g \wedge r\) where \(g\) is a propositional atom denoting the statement "I will go out" and \(r\) is a propositional atom denoting the fact that it is raining.
+                    </li>
+
+                    <li>
+                        "Unless" usually means or, e.g. "I will go out unless it rains" can be translated to \(g \vee r\), where \(g\) is a propositional atom representing "I will go" and \(r\) is a propositional atom representing "it is raining". Note that in some contexts, or is exclusive, where only one of the two cases can/will occur. In this case we use a bidirectional implication to represent the sentence. For the previous example, we would have \(g \leftrightarrow (¬r)\) because, by the semantics of \(\leftrightarrow\), \(\phi \leftrightarrow \psi\) is true when both \(\phi\) and \(\psi\) have the same value, so in \(g \leftrightarrow (¬r)\) it must be the case that \(g\) and \(r\) have opposite truth values.
+                    </li>
+
+                    <li>"Only if" usually means implication, e.g. "you will pass only if your average is at least forty" can be expressed as \(p \rightarrow f\), i.e. "if you passed, then your average was at least forty".</li>
+
+                    <li>"Is necesary for" usually means implication, but in the other direction, e.g. "Attending the course is necessary for obtaining a certificate" could be written as \(c \rightarrow a\), i.e. "if you got a certificate, then you must have attended the course".</li>
+
+                    <li>"Is sufficient for" also usually means implication, e.g. "Arriving timely for rehearsals is sufficient for taking part in the play" could be written as \(r \rightarrow p\), i.e. "if you arrive timely at rehearsals then you will take part in the play".</li>
+                </ul>
+            </li>
+
+            <li>
+                Translating logic to English - translating logic to English is simply the reverse of the previous.
+
+                <ul>
+                    <li>E.g. if \(p\) represents "I will go out" and \(q\) represents "it is raining" then \(p \wedge q\) represents "I will go out even though it is raining", \(¬p\) can be translated to "I will not go out" and \(q \rightarrow p\) can be translated to "if it rains then I will go out".</li>
+                </ul>
+            </li>
+
+            <li>
+                Modalities - a modality is a shift in context in a sentence. Modalities cause problems for propositional logic translation.
+
+                <ul>
+                    <li>E.g. "I will be rich and famous" could be thought of as \(\text{"I will be rich"} \wedge \text{"I will be famous"}) but this is not a massively accurate translation, since "I will be rich and famous" suggests being rich and famous at the same time, whereas the propositional logic translations does not give any information on the time at which "I will be rich" and "I will be famous" will occur.</i>
+                    <li>E.g. "You can have chicked or fish" coud be translated as \(\text{"You can have chicked" \vee \text{"You can have fish"}}\) but this is inaccurate, as this logical statement would hold even if the only dish you can have is chicken - there is additional meaning in the English that is not preserved in the logic.</li>
+                </ul>
+            </li>
+
+            <li>
+                
+            </li>
+
+            <li>
+                
+            </li>
+
+            <li>
+                
+            </li>
+
+            <li>
+                
+            </li>
+        </ul>
+    </body>
+</html>
