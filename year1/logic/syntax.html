@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Computing Notes
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./../../main.css">
+        
+        <script src="mathjax-config.js" defer></script>
+        <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    </head>
+
+    <body>
+        <h1>Propositional Logic Syntax</h1>
+
+        <h2>Definitions</h2>
+
+        <ul>
+            <li>
+                Logic - a logic is a system of reasoning. A logic is composed of:
+                <ul>
+                    <li>Syntax - the formal language of the logic (comparable to a programming language).</li>
+                    <li>Semantics - the meanings associated with the symbols in the syntax.</li>
+                    <li>Proof theory - a syntactic way of identifying valid statements in the language (i.e. evaluating a string of symbols to be true or false).</li>
+                </ul>
+            </li>
+
+            <li>
+                Components of propositional logic syntax:
+                
+                <ul>
+                    <li>Propositional atoms - true or false values</li>
+                    <li>Boolean connectives - not (\(¬\)), and (\(\wedge\)), or (\(\vee\)), if-then (\(\rightarrow\)), if-and-only-if (\(\leftrightarrow\)), true (\(\top\), also called top), false (\(\bot\), also called bottom)</li>
+                    <li>Punctuation - we use brackets to disambiguate formulas, e.g. \((p \wedge q) \vee r\) is different to \(p \wedge (q \vee r)\)</li>
+                </ul>
+            </li>
+
+            <li>
+                Propositional formula - a propositional formula is a string of symbols made from propositional formulas. Formally, a propositional formula is defined as any of the following:
+            
+                <ul>
+                    <li>A propositional atom</li>
+                    <li>\(\top\) and \(\bot\)</li>
+                    <li>If \(\phi\) is a formula then (\(¬\phi\)) is as well (the brackets are important)</li>
+                    <li>If \(\phi\) and \(\psi\) are formulas then (\(\phi \wedge \psi\)), (\(\phi \vee \psi\)), (\(\phi \rightarrow \psi\)) and (\(\phi \leftrightarrow \psi\)) are formulas</li>
+                    <li>Nothing else is a formula. Note that the first two bullet points may be referred to as "atomic" formulas.</li>
+                </ul>
+            </li>
+
+            <li>
+                Binding conventions - the binding conventions determine how formulas without brackets should be interpretted. From strongest to weakest, the binding conventions for the Boolean connectives are: \(¬, \wedge, \vee, \rightarrow, \leftrightarrow\)
+
+                <ul>
+                    <li>E.g. \(p \vee q \rightarrow ¬r \wedge s\) should be interpretted as \((p \vee q) \rightarrow ((¬r) \wedge s)\)</li>
+                    <li>Note that repeated connectives are ambiguous - for some boolean connectives it doesn't matter (e.g. \(p \wedge q \wedge r \equiv p \wedge (q \wedge r) \equiv (p \wedge q) \wedge r\)) but for others it does - you should never write repeated boolean connectives in your formulas</li>
+                </ul>
+            </li>
+
+            <li>
+                Formation tree - every logical formula has a corresponding formation tree. Formation trees are formed by splitting down a formula into subformulas via its weakest boolean connective.
+
+                <ul>
+                    <li>E.g. the formula \(¬p \vee q \rightarrow (p \rightarrow q \wedge r)\) would have the following formation tree:</li>
+                    <img src="formationtree1.png">
+                </ul>
+            </li>
+
+            <li>
+                Principal connective and overall logic form - the principle connective in a formula is the connective at the root of its formation tree (i.e. the weakest bound connective). The overall logic form of a formula is one or two generic formulae connected by the principal connective. The overall logic form of the formula and corresponding formation tree above is \(\phi \rightarrow \psi\).
+            </li>
+
+            <li>
+                Subformula - the subformulas of a formula \(\phi\) are the formulas that make up the formula. In other words, they are the subtrees of formation tree.
+
+                <ul>
+                    <li>E.g. the subformulas of the formula previously given are: \(¬p \vee q \rightarrow (p \rightarrow q \wedge r), ¬p \vee q, ¬p, p, q, p \rightarrow (q \wedge r), p, q \wedge r, q, r\). Note that it is important that every subtree is give, even if two are symbolically identical, since they represent different parts of the formula and are therefore separate subformulas.</li>
+                </ul>
+            </li>
+
+            <li>
+                Atomic formula - a formua of the form \(\top, \bot\) or \(p\), where \(p\) is a propositional atom.
+            </li>
+
+            <li>
+                Negated formula - a formula of the form \(¬\phi\) where \(\phi\) is a propositional formula.
+            </li>
+
+            <li>
+                Conjunction - a formula of the form \(\phi \wedge \psi\).
+            </li>
+
+            <li>
+                Disjunction - a formula of the form \(\phi \vee \psi\).
+            </li>
+
+            <li>
+                Implication - a formula of the form \(\phi \rightarrow \psi\).
+            </li>
+
+            <li>
+                Bidirectional implication - a formula of the form \(\phi \leftrightarrow \psi\).
+            </li>
+
+            <li>
+                Literal - a formula that is either atomic or negated atomic (i.e. made up of \(\top, \bot\) or propositional atom \(p\), or the negation of such a formula).
+            </li>
+
+            <li>
+                Clause - a formula that is a disjunction of one or more literals.
+            </li>
+        </ul>
+    </body>
+</html>
