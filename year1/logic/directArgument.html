@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Computing Notes
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./../../main.css">
+        
+        <script src="mathjax-config.js" defer></script>
+        <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    </head>
+
+    <body>
+        <h1>Direct Argument in Propositional Logic</h1>
+
+        <ul>
+            <li>
+                Direct argument - direct argument shows the truth or falsity of a propositional formula by constructing direct logical arguments from zero or more premises to a conclusion. Typically, this is done by considering each of the possible cases of values for the propositional atoms and explaining why the conclusion is true in each of them.
+            </li>
+
+            <li>
+                Direct argument example 1 - show that \(p \wedge (p \rightarrow q) \rightarrow q\) is a valid formula.
+
+                <ul>
+                    <li>Take an arbitrary situation. For \(p \wedge (p \rightarrow q) \rightarrow q\) to be valid, it must be true in this arbitrary situation.</li>
+                    <li>For the formua to be true, either \(p \wedge (p \rightarrow q)\) must be true or \(q\) must be true, by the semantics of \(\rightarrow\).</li>
+                    <li>For \(p \wedge (p \rightarrow q)\) to be true then both \(p\) and \(p \rightarrow q\) must be true in that situation, by the semantics of \(\wedge\).</li>
+                    <li>For \(p \rightarrow q\) to be true, either \(p\) is false or \(q\) is true, by the semantics of \(\rightarrow\).</li>
+                    <li>If \(p\) is false, then \(p \wedge (p \rightarrow q)\) is false by the semantics of \(\wedge\), and thus \(p \wedge (p \rightarrow q) \rightarrow q\) is true by the semantics of \(\rightarrow\).</li>
+                    <li>If \(p\) is true, then for \(p \rightarrow q\) to be true, \(q\) must also be true by the semantics of \(\rightarrow\).</li>
+                    <li>Since, in any situation where \(p \wedge (p \rightarrow q)\) is true, \(q\) is also true then \(p \wedge (p \rightarrow q) \rightarrow q\) is true in that situation by the semantics of \(\rightarrow\).</li>
+                </ul>
+            </li>
+
+            <li>
+                Direct argument example 2 - show that \((\phi \wedge \psi) \wedge \rho \equiv \phi \wedge \(\psi \wedge \rho)\) for arbitrary formulas \(\phi, \psi, \rho\).
+
+                <ul>
+                    <li>For the two formulas to be equivalent, they must be true in exactly the same situations.</li>
+                    <li>Consider an arbitrary situation.</li>
+                    <li>For \((\phi \wedge \psi) \wedge \rho\) to be true, \(\phi \wedge \psi\) and \(\rho\) must be individually true by the semantics of \(\wedge\). Similarly, for \(\phi \wedge \psi\) to be true, both \(\phi\) and \(\psi\) must be individually true, so \((\phi \wedge \psi) \wedge \phi\) is true if and only if \(\phi, \psi, \rho\) are all true individually.</li>
+                    <li>For \(\phi \wedge (\psi \wedge \rho)\) to be true, \(\phi \wedge \psi\) and \(\rho\) must be individually true by the semantics of \(\wedge\). Similarly, for \(\psi \wedge \rho\) to be true, both \(\psi\) and \(\rho\) must be individually true, so \(\phi \wedge (\psi \wedge \rho)\) is true if and only if \(\phi, \psi, \rho\) are all true individually.</li>
+                    <li>Therefore, if \((\phi \wedge \psi) \wedge \rho\) is true then \(\phi, \psi, \rho\) are all true individually, meaning that \(\phi \wedge (\psi \wedge \rho)\) is also true.</li>
+                    <li>TODO - check this</li>
+                </ul>
+            </li>
+
+            <li>
+                Direct argument exampe 3 - show that \(((p \rightarrow q) \rightarrow p) \rightarow p\) is a valid formula.
+
+                <ul>
+                    <li>Take an arbitrary situation.</li>
+                    <li>\(((p \rightarrow q) \rightarrow p) \rightarrow p) is true exactly when \((p \rightarrow q) \rightarrow p\) is false or \(p\) is true by the semantics of \(\rightarrow\).</li>
+                    <li>\((p \rightarrow q) \rightarrow p\) is true exactly when \(p \rightarrow q\) is false or when \(p\) is true.</li>
+                    <li>Consider the case when \(p\) is true. Then \(((p \rightarrow q) \rightarrow p) \rightarrow p\) is true by the semantics of \(\rightarrow\).</li>
+                    <li>Consider the case when \(p\) is false. Then \(p \rightarrow q\) is true by the semantics of \(\rightarrow\). Then \((p \rightarrow q) \rightarrow p\) is true, regardless of the value of \(q\). As \((p \rightarrow q) \rightarrow p\) is true and \(p\) is true, by the semantics of \(\rightarrow\) it is the case that \(((p \rightarrow q) \rightarrow p) \rightarrow p\) is true by the semantics of \(\rightarrow\).</li>
+                    <li>Therefore, \(((p \rightarrow q) \rightarrow p) \righarrow p\) is true in all situations so is valid.</li>
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>

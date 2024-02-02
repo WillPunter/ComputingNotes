@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Computing Notes
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./../../main.css">
+        
+        <script src="mathjax-config.js" defer></script>
+        <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    </head>
+
+    <body>
+        <h1>Equivalences in Propositional Logic</h1>
+
+        <ul>
+            <li>
+                Showing validity using equivalences - since \(\top\) is a valid formula by definition, we can show that a formula is valid by showing that it is equivalent to \(\top\). We can show that an argument is valid by converting the argument to its corresponding implication formula and then showing this to be equivalent to \(\top\).
+            </li>
+
+            <li>
+                Equivalences involving \(\wedge\):
+
+                <ul>
+                    <li>\(\phi \wedge \psi \equiv \psi \wedge \psi\) (commutativity of \(\wedge\))</li>
+                    <li>\(\phi \wedge \phi \equiv \phi\) (idempotence of \(\phi\))</li>
+                    <li>\(\phi \wedge \top \equiv \phi\)</li>
+                    <li>\(\phi \wedge \bot \equiv \bot\)</li>
+                    <li>\((\phi \wedge \psi) \wedge \rho \equiv \phi \wedge (\psi \wedge \rho)\) (assoiativity of \(\wedge\))</li>
+                </ul>
+            </li>
+
+            <li>
+                Equivalences involving \(\vee\):
+                
+                <ul>
+                    <li>\(\phi \vee \psi \equiv \psi \vee \phi\) (commutativity of \(\vee\))</li>
+                    <li>\(\phi \vee \phi \equiv \phi\) (idempotence of \(\vee\))</li>
+                    <li>\(\phi \vee \top \equiv \top\)</li>
+                    <li>\(\phi \vee \bot \equiv \phi\)</li>
+                    <li>\(\phi \vee (\psi \vee \rho) \equiv (\phi \vee \psi) \vee \rho\)</li>
+                </ul>
+            </li>
+
+            <li>
+                Equivalences involving \(¬\):
+
+                <ul>
+                    <li>\(¬\top \equiv \bot\)</li>
+                    <li>\(¬\bot \equiv \top)</li>
+                    <li>\(¬¬\phi \equiv \phi\)</li>
+                </ul>
+            </li>
+
+            <li>
+                Equivalences involving \(\rightarrow\):
+
+                <ul>
+                    <li>\(\phi \rightarrow \phi \equiv \top\)</li>
+                    <li>\(\top \rightarrow \phi \equiv \phi\)</li>
+                    <li>\(\phi \rightarrow \top \equiv \top\)</li>
+                    <li>\(\phi \rightarrow \bot \equiv ¬\phi\)</li>
+                    <li>\(\bot \rightarrow \phi \equiv ¬\phi\)</li>
+                    <li>\(\phi \rightarrow \psi \equiv ¬\phi \vee \psi \equiv ¬(\phi \wedge ¬\psi)\)</li>
+                    <li>\(¬(\phi \righarrow \psi) \equiv \phi \wedge ¬\psi\)</li>
+                </ul>
+            </li>
+
+            <li>
+                Equivalences involving \(\leftrightarrow\):
+
+                <ul>
+                    <li>\(\phi \leftrightarrow \psi \equiv (\phi \rightarrow \psi) \wedge (\psi \rightarrow \phi) \equiv (\phi \wedge \psi) \vee (¬\phi \wedge ¬\psi) \equiv ¬\phi \leftrightarrow ¬\psi\)</li>
+                    <li>\(¬(\phi \leftrightarrow \psi) \equiv (\phi \leftrightarrow ¬\psi) \equiv ¬\phi \leftrightarrow \psi \equiv (\phi \wedge ¬\psi) \vee (¬\phi \wedge \psi)\)</li>
+                </ul>
+            </li>
+
+            <li>
+                De Morgan's Laws
+
+                <ul>
+                    <li>\(¬(\phi \wedge \psi) \equiv ¬\phi \vee ¬\psi\)</li>
+                    <li>\(¬(\phi \vee \psi) \equiv ¬\phi \wedge ¬\psi\)</li>
+                </ul>
+            </li>
+
+            <li>
+                Distributivity Laws:
+
+                <ul>
+                    <li>\(\phi \wedge (\psi \vee \rho) \equiv (\phi \wedge \psi) \vee (\phi \wedge \rho)\)</li>
+                    <li>\((\phi \vee \psi) \wedge \rho \equiv (\phi \wedge \rho) \vee (\psi \wedge \rho)\)</li>
+                    <li>\(\phi \vee (\psi \wedge \rho) \equiv (\phi \vee \psi) \wedge (\phi \vee \rho)\)</li>
+                    <li>\((\phi \wedge \psi) \vee \rho \equiv (\phi \vee \rho) \wedge (\psi \vee \rho)\)</li>
+                </ul>
+            </li>
+
+            <li>
+                Absorption Laws:
+
+                <ul>
+                    <li>\(\phi \wedge (\phi \vee \psi) \equiv \phi\)</li>
+                    <li>\((\phi \vee \psi) \wedge \phi \equiv \phi\)</li>
+                    <li>\(\phi \vee (\phi \wedge \psi) \equiv \phi\)</li>
+                    <li>\((\phi \wedge \psi) \vee \phi \equiv \phi\)</li>
+                </ul>
+            </li>
+
+            <li>
+                We can prove any of the above equivalences using truth tables.
+            </li>
+
+            <li>
+                Disjunctive normal form - a formula is in DNF if it is a disjunction of one or more conjunctions of literals and is not further simplifiable by equivalences without leaving this form. We can use equivalences to write an existing formula in DNF if it is not already. DNF is useful, as a formula in DNF is unsatisfiable if and only if each of its conjunctions contains some literal and its negation (i.e. a contradiction). This allows us to check the satisfiability of a formula in DNF in linear time.
+
+                <ul>
+                    <li>E.g. \(p\), \(¬p\), \(p \vee ¬q\) and \((p \wedge q) \vee (¬r \vee s) \vee ¬p\) are all in DNF.</li>
+                    <li>E.g. \(¬(q \vee r)\) and \((p \wedge q) \vee (q \wedge \top \wdge ¬q)\) are not in DNF (the latter is simplifiable).</li>
+                </ul>
+            </li>
+
+            <li>
+                Conjunctive normal form - a formula is in CNF if it is a conjunction of disjunctions of literals (i.e. a conjunction of clauses) and is not further simlifiable without leaving this form. A formula in CNF is valid if and only if all of its disjuncts contain a literal and its negation.
+
+                <ul>
+                    <li>E.g. \(p\), \(¬p\), \(p \vee ¬q\) and \((p \vee ¬q) \wedge r\) are all in CNF.</li>
+                    <li>E.g. \(q \vee (¬q \wedge r)\) and \(¬(r \vee s)\) are not in CNF.</li>
+                </ul>
+            </li>
+
+            <li>
+                To rewrite a formula in a normal form, we:
+
+                <ol>
+                    <li>Remove all occurences of \(\rightarrow\) and \(\leftrightarrow\) by replacing each subformula \(\phi \rightarrow \psi\) with \(¬\phi \vee \psi\) and each subformula \(\phi \leftrightarrow \psi\) with \((\phi \wedge \psi) \vee \(¬\phi \wedge ¬\psi\).\)</li>
+                    <li>Use De Morgan's laws to push all negations down next to propositional atoms. Remove all double negations.</li>
+                    <li>Rearrange using distrubitvity to get the designed normal form.</li>
+                    <li>Make any additional simplifications.</li>
+                </ol>
+            </li>
+
+            <li>
+                Example - write \(¬(p \rightarrow q) \vee r \rightarrow p)\) in DNF
+
+                <ol>
+                    <li>\(¬(p \rightarrow q) \vee (r \rightarrow p) \equiv ¬(¬p \vee q) \vee (¬r \vee p)\) \([\phi \rightarrow \psi \equiv ¬\phi \vee \psi]\)</li>
+                    <li>\(¬(¬p \vee q) \vee (¬r \vee p) \equiv (¬¬p \wedge ¬q) \vee (¬r \vee p) [De Morgan's Law]\)</li>
+                    <li>\((¬¬p \wedge ¬q) \vee (¬r \vee p) \equiv (p \wedge ¬p) \vee (¬r \vee p) [Double negation]\)</li>
+                    <li>\((p \wedge ¬q) \vee (¬r \vee p) \equiv p \vee (p \wedge ¬q) \vee ¬r [Commutativity of \vee]\)</li>
+                    <li>\(p \vee (p \wedge ¬q) \vee ¬r \equiv p \vee ¬r [By absorption]\)</li>
+                    <li>This is now in DNF.</li>
+                </ol>
+            </li>
+
+            <li>
+                Example - showing formula validity using equivalences. Show that \((p \rightarrow q) \vee (q \rightarrow p)\) is a valid formula.
+
+                <ol>
+                    <li>\((p \rightarrow q) \vee (q \rightarrow p) \equiv (¬p \vee q) \vee (¬q \vee p) [\phi \rightarrow \psi \equiv ¬\phi \vee \psi]\)</li>
+                    <li>\((¬p \vee q) \vee (¬q \vee p) \equiv ¬p \vee (q \vee ¬q) \vee p [associativity of \vee]\)</li>
+                    <li>\(¬p \vee (q \vee ¬q) \vee p\) \equiv ¬p \vee \top \vee p [\phi \vee ¬\phi \equiv \top]</li>
+                    <li>\(¬p \vee \top \vee p \equiv ¬p \vee p \vee \top [commutativity of \vee]\)</li>
+                    <li>\(¬p \vee p \vee \top \equiv (¬p \vee p) \vee top [associativity of \vee]\)</li>
+                    <li>\((¬p \vee p) \vee \top \equiv \top [\phi \vee \top \equiv \top]\)</li>
+                    <li>So the formula is valid.</li>
+                </ol>
+            </li>
+
+            <li>
+                We can get the CNF and DNF from the truth table for a formula. The DNF is obtained by taking the values of the propositional atoms on each row where the result is true and or-ing them together. This is similar to canonical minterm form in computer systems. Similarly, CNF can be obtained from a truth table by finding every row where the result is false and and-ing the disjuncion of the assingments in this row.
+                TODO - add an example of this. 
+            </li>
+        </ul>
+    </body>
+</html>
