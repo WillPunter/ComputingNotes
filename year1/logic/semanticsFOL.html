@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Computing Notes
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./../../main.css">
+        
+        <script src="mathjax-config.js" defer></script>
+        <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    </head>
+
+    <body>
+        <h1>Semantics of Predicate Logic</h1>
+
+        <ul>
+            <li>
+                Domain of discourse - a non-empty set of objects, \(\mathbb{D}\), which exist within the logic.
+            </li>
+
+            <li>Cartesian power of \(\mathbb{D}\) - the \(n\)-ary Cartesian power of a set \(\mathbb{D}\), written \(\mathbb{D}^n\) is the set of all \(n\)-tuples that can be constructed from the domain of discourse.</li>
+
+            <li>
+                A relation \(R\) of arity \(n\) over \(\mathbb{D}\) is a subset of \(\mathbb{D}^n\) 
+            </li>
+
+            <li>
+                A function of arity \(n\) over \(\mathbb{D}\) is a one-to-one or a many-to-one mapping from all of \(\mathbb{D}^n\) to \(\mathbb{D}\).
+            </li>
+
+            <li>
+                A many-to-one funcion means that different \(n\)-tuples of objects in \(\mathbb{D}\) may be mapped to the same object in \(\mathbb{D}\), but each \(n\)-tuple is mapped to exactly one object.
+            </li>
+
+            <li>
+                L-structure - if \(L\) is a signature \(\langle K, F, P \rangle\), then \n \(L\)-structure \(M\) is a pair \(M = \langle \mathbb{D}, \mathbb{I} \rangle\) where \(\mathbb{D}\) is a domain of discourse of \(M\) and \(\mathbb{I}\) is an interprestation that specifiesthe meaning of each symbol in \(L\) in terms of the objects in \(\mathbb{D}\).
+
+                <ul>
+                    <li>For each constant \(c \in K\), \(\mathbb{I}(c) = c_M \in \mathbb{D}\).</li>
+                    <li>For each \(n\)-ary function symbol \(f \in F\), \(\mathbb{I}(f) = f_M : \mathbb{D}^n \rightarrow \mathbb{D}\).</li>
+                    <li>For each \(n\)-ary predicate symbol \(p \in P\), \(\nathbb{I}(p) = p_M \subseteq \mathbb{D}^n\).</li>
+                </ul>
+            </li>
+
+            <li>
+                Example \(L\)-structure:
+
+                <ul>
+                    <li>\(\mathbb{D} = \{o_1, o_2, ..., o_12\}\)</li>
+                    <li>\(e\mathbb{I}(tony) = o_5, \mathbb{I}(susan) = o_4, \mathbb{I}(frank) = o_3, \mathbb{I}(clyde) = o_7, \mathbb{I}(c) = o_11, \mathbb{I}(heron) = o_10.\)</li>
+                    <li>\(\mathbb{I}(father_of) = f_M : \mathbb{D} \rightarrow \mathbb{D}\), given by: \(\langle o_1 \rightarrow o_1, o_2 \rightarrow o_1, o_3 \rightarrow o_1, o_4 \rightarrow o_2, o_5 \rightarrow o_2, o_6 \rightarrow o_7, o_7 \rightarrow o_8, o_8 \rightarrow o_1, o_9 \rightarrow o-6, o_10 \rightarrow o_11, o_11 \rightarrow o_12, o_12 \rightarrow o_12\).</li>
+                    <li>\(\mathbb{I}(Human) = \{o_1, o_2, o_3, o_4, o_5\}, \mathbb{I}(Lecturer) = \{o_2, o_3, o_4, o_5, o_6\}, \mathbb{PC} = \{o_10, o_11, o_12\}\)</li>
+                    <li>\(\mathbb{I}(bought) = \{(o_4, o_10), (o_5, o_10), (o_4, o_7)\}\)</li>
+                </ul>
+
+                <br/>
+
+                This can be represented visually via the following diagram. Note that functions cannot be represented in an \(L\)-structure diagram.
+                <img src="./img/lstructure.png"></img>
+            </li>
+
+            <li>
+                Truth in an \(L\)-structure - we can determine whether an \(L\)-formula is true simply by observing the structure. For example, we can see that \(M \models PC(heron)\) because the object that the constant \(heron\) represents is in the set of the unary predicate \(PC\). We read this as "\(M\) says \(PC(heron)\)".
+            </li>
+
+            <li>
+                Quantifiers and truth - \(M \models \forall x \phi\) is true if \(\phi\) is true for every object in the domain of discourse. \(\exists x \phi\) is true if \(\phi\) is true for at least one object in the domain of discourse.
+            </li>
+
+            <li>
+                Bound and free variables - If \(\phi\) is a formula, any occurence of a variable \(x\) in \(\phi\) is considered "bound" if it occurs in the scope of the quantifier \(\forall x\) or \(\exists x\). Variables that are not bound are called free. The free variables of \(\phi\) are the variables that have at least one free occurence in \(\phi\).
+            </li>
+
+            <li>
+                Example - finding free and bound occurences - we can produce a formation tree to find the free and bound occurences of variables. This can be seen below for the formula \(\forall x (R(x,y) \wedge R(y, z) \rightarrow \exists z (S(x, z) \wedge z = y))\)
+            
+                <img src="freeboundvars.png"></img>
+            </li>
+
+            <li>
+                Assignment - for an \(L\)-structure \(M = \langle \mathbb{D}, \mathbb{I} \rangle\), an assignment over \(M\) is a function, \(h : V \rightarrow \mathbb{D}\) that assigns an object in the domain of discourse to each variable.
+            </li>
+
+            <li>
+                Evaluating terms - for a signature \(L\) and an \(L\)-structure \(M = \langle \mathbb{D}, \mathbb{I} \rangle \) and an assignment \(h\) over \(M\), the value of any \(L\)-term \(t\), denoted as \(|t|_M^h\) is given by:
+
+                <ul>
+                    <li>\(M\) if \(t\) is a constant: \(|t|_M^h = \mathbb{I}(t) = t_M\)</li>
+                    <li>\(h\) if \(t\) is a variable: \(|t|_M^h = h(t)\)</li>
+                    <li>\(M\) and \(h\) if \(t\) is a term \(f(t_1, ..., t_n)\): \(|t|_M^h = f_M(|t_1|_M^h, ..., |t_n|_M^h)\)</li>
+                </ul>
+            </li>
+
+            <li>
+                Evaluating quantifier-free formulas - for an \(L\)-structure \(M = \langle \mathbb{D}, \mathbb{I} \rangle\) we can evaluate a formula using the following:
+
+                <ul>
+                    <li>If \(R\) is an \(n\)-ary predicate in \(L\) then \(M, h \models R(t_1, ..., t_n)\) if \((a_1, ..., a_n) \in R_M\).</li>
+                    <li>If \(t\) and \(t'\) are terms then \(M, h \models t = t'\) if \(t\) and \(t'\) jhave the same value in \(M\) under \(h\), that is \(|t|_M^h = |t'|_M^h\).</li>
+                    <li>\(M, h \models \top\) and \(M, h \nvDash \bot\).</li>
+                    <li>\(¬, \wedge, \vee, \rightarrow, \leftrightarrow\) are the same as in propositional logic.</li>
+                </ul>
+            </li>
+
+            <li>
+                Variable-equivalent variable assignments - two assignments \(g\) and \(h\) are \(x\)-equivalent if they differ at most in the value of \(x\). The same can be said for any other variable. E.g. \(h_1: h_1(x) = o_1, h_1(y) = o_2, h_1(z) = o_3\) and \(h_2: h_2(x) = o_4, h_2(y) = o_2, h_2(z) = o_3\) are \(x\)-equivalent.
+            </li>
+
+            <li>
+                Evaluating quantifiers - for an \(L\)-structure \(M = \langle \mathbb{D}, \mathbb{I} \rangle\) and assignment \(h\), we have the following:
+
+                <ul>
+                    <li>\(M, h \models \exists x \phi\) if \(M, g \models \phi\) for some assignemnt \(g\) that is \(x\) equivalent to \(\h\).</li>
+                    <li>\(M, h \models \forall x \phi\) if \(M, g \models \phi\) for every assignment \(g\) that is \(x\)-equivalent to \(h\).</li>
+                </ul>
+            </li>
+
+            <li>Free variable notation - if \(\phi\) is a formula with free variables \(x_1, ..., x_n\) we can express this by writing \(\phi (x_1, ..., x_n)\). Note that we can either include all variable, including bound in the brackets, just the free variables, or no brackets at all, but nothing else.</li>
+
+            <li>Sentence - a sentence is a formula with no free variables.</li>
+
+            <li>Difficulty of predicate logic evaluation - predicate logic can often be done mentally, but for more difficult cases a computer is required. For \(L\)-structures with a finite number of elements in its domain of discourse, all possible assignments can be computed to check the validity / satisfiability of an \(L\)-formula, but for infinite domains of discourse this is not possible to compute.</li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Computing Notes
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./../../main.css">
+        
+        <script src="mathjax-config.js" defer></script>
+        <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    </head>
+
+    <body>
+        <h1>Natural Deduction in Propositional Logic</h1>
+
+        <ul>
+            <li>
+                Natural deduction - natural deduction is a proof system. It is syntactic in nature, meaning that we reason on the syntax of the formulas rather than the semantics. In other words, natural deduction is algorithmic.
+            </li>
+
+            <li>
+                Premises, conclusions and sequents - In natural deduction we start with a statement of the form: \(\phi_1, \phi_2, ..., \phi_n \vdash \psi\). \(phi_1, \phi_2, ..., \phi_n\) are called premises, \(\psi\) is called a conclusion and \(\phi_1, \phi_2, ..., \phi_n \vdash \psi\) is called a sequent.
+            </li>
+
+            <li>
+                Natural deduction works by first assuming the premises, then following a sequence of inference rules to get the conclusion. Each step of the proof is in itself a valid argument. There are two rules for each connective - one for introducting it (i.e. bringing in a formula whose principal connective is the connective introduced) and one for using it (also called eliminatnig it).
+            </li>
+
+            <li>
+                Rules for conjunction:
+
+                <ul>
+                    <li>
+                        \(\wedge\)-introduction:
+
+                        <div class="box">
+                            1 \(\phi\) already proven<br/>
+                            2 ... (other stuff)<br/>
+                            3 \(\psi\) now proven<br/>
+                            4 \(\phi \vee \psi\) \(\wedge I(1,3)\)
+                        </div>
+                    </li>
+
+                    <li>
+                        \(\wedge\)-elimination:
+
+                        <div class="box">
+                            1 \(\phi \wedge \psi\) already proven
+                            2 \(\phi\) \(\wedge E(1)\)
+                            3 \(\psi) \(\wedge E(1)\)
+                        </div>
+                    </li>
+                </ul>
+
+                <br/>
+
+                E.g. prove that the sequent \(p \wedge q, r \vdash q \wedge r\) is valid:
+
+                <div class="box">
+                    1 \(p \wedge q\) premise<br/>
+                    2 \(r\) premise<br/>
+                    3 \(q\) \(\wedge E(1)\)<br/>
+                    4 \(q \wedge r\) \(\wedge I(2,3)\)<br/>
+                </div>
+            </li>
+
+            <li>
+                Rules for implication:
+
+                <ul>
+                    <li>
+                        \(\rightarrow\)-introduction:
+
+                        <div class="box">
+                            <div class="box">
+                                1 \(\phi\) asm<br/>
+                                2 \(...\) (other stuff)<br/>
+                                3 \(\psi\) somehow proven<br/>
+                            </div>
+                            4 \(\phi \rightarrow \psi\) \(\rightarrow I(1,3)\)
+                        </div>
+                    </li>
+
+                    <li>
+                        \(\rightarrow\)-elimination:
+
+                        <div class="box">
+                            1 \(\phi \rightarrow \psi\) already proven
+                            2 \(\phi\) already proven
+                            3 \(\psi\) \(\rightarrow E(1,2)\)
+                        </div>
+                    </li>
+                </ul>
+
+                <br/>
+
+                E.g. prove that the sequent \(p, p \rightarrow q, p \rightarrow (q \rightarrow r) \vdash r\) is valid:
+
+                <div class="box">
+                    1 \(p\) premise<br/>
+                    2 \(p \rightarrow q\) premise<br/>
+                    3 \(p \rightarrow (q \rightarrow r)\) premise<br/>
+                    4 \(q\) \(\rightarrow E(2, 1)\) <br/>
+                    5 \(q \rightarrow r\) \(\rightarrow E(3, 1)\)<br/>
+                    6 \(r\) \(\rightarrow E(5, 4)\)
+                </div>
+            </li>
+
+            <li>
+                We can prove equivalence using natural deduction. If we want to prove \(\phi \equiv \psi\) we write \(\phi \dashv \vdash \psi\). We show this by proving \(\phi \vdash \psi\) and \(\psi \vdash \phi\) independently.
+            </li>
+
+            <li>
+                Rules for disjunction:
+
+                <ul>
+                    <li>
+                        \(\vee\)-introduction:
+
+                        <div class="box">
+                            1 \(\phi\) already proven<br/>
+                            2 \(\phi \vee \psi\) \(\vee I(1)\)<br/>
+                        </div>
+                    </li>
+
+                    <li>
+                        \(\vee\)-elimination:
+
+                        <div class="box">
+                            1 \(\phi \vee \psi\) already proven<br/>
+                            <div class="box">
+                                2 \(\phi\) asm<br/>
+                                3 ... (other stuff)<br/>
+                                4 \(\rho\)<br/>
+                            </div>
+
+                            <div class="box">
+                                5 \(\psi\) asm<br/>
+                                6 ... (other stuff)<br/>
+                                7 \(\rho\)<br/>
+                            </div>
+
+                            <br/>
+
+                            8 \(\rho\) \(\vee E(1, 2 - 4, 5 - 7)\)<br/>
+                        </div>
+                    </li>
+                </ul>
+
+                E.g. prove that the sequent \(q \rightarrow r \vdash p \vee q \rightarrow p \vee r\) is valid.
+
+                <div class="box">
+                    1 \(q \rightarrow r\) premise<br/>
+
+                    <div class="box">
+                        2 \(p \vee q\) asm<br/>
+                        
+                        <div class="box">
+                            3 \(p\) asm<br/>
+                            4 \(p \vee r\) \(\vee I(3)\)
+                        </div>
+
+                        <div class="box">
+                            5 \(q\) asm<br/>
+                            6 \(r\) \(\rightarrow E(1, 5)\)<br/>
+                            7 \(p \vee r\) \(\vee I(6)\)
+                        </div>
+
+                        8 \(p \vee r\) \(\vee E(2, 3-4, 5-7)\)
+                    </div>
+
+                    9 \(p \vee q \rightarrow p \vee r\) \(\rightarrow I(2, 8)\)<br/>
+                </div>
+            </li>
+
+            <li>
+                Rules for negation:
+
+                <ul>
+                    <li>
+                        \(¬\)-introduction:
+
+                        <div class="box">
+                            <div class="box">
+                                1 \(\phi\) asm<br/>
+                                2 \(...\) (other stuff)<br/>
+                                3 \(\bot\)<br/>
+                            </div>
+                            4 \(¬ \phi \) \(¬I(1,3)\)
+                        </div>
+                    </li>
+
+                    <li>
+                        \(¬\)-elimination:
+
+                        <div class="box">
+                            1 \(¬\phi\) already proven
+                            2 \(\phi\) already proven
+                            3 \(\bot\) \(¬E(2,1)\)
+                        </div>
+                    </li>
+                </ul>
+
+                <br/>
+
+                E.g. prove that the sequent \(p \rightarrow ¬p \vdash ¬p\) is a valid sequent:
+
+                <div class="box">
+                    1 \(p \rightarrow ¬p\) premise<br/>
+
+                    <div class="box">
+                        2 \(p\) asm<br/>
+                        3 \(¬p\) \(\rightarrow E(1, 2)\)<br/>
+                        4 \(\bot\) \(¬E(2, 3)\)
+                    </div>
+
+                    5 \(¬n\) \(¬I(2, 4)\)
+                </div>
+            </li>
+
+            <li>
+                Rules for double negation:
+
+                <ul>
+                    <li>
+                        \(¬¬\)-introduction:
+
+                        <div class="box">
+                            1 \(\phi\) already proven<br/>
+                            2 \(¬¬\phi\) \(¬¬I(1)\)<br/>
+                        </div>
+                    </li>
+
+                    <li>
+                        \(¬¬\)-elimination:
+
+                        <div class="box">
+                            1 \(¬¬\phi\) already proven<br/>
+                            2 \(\phi\) \(¬¬E(1)\)
+                        </div>
+                    </li>
+                </ul>
+
+                <br/>
+
+                E.g. prove that the sequent \(p, ¬¬(q \wedge r) \vdash ¬¬p \wedge r\) is valid:
+
+                <div class="box">
+                    1 \(p\) premise<br/>
+                    2 \(¬¬(p \wedge r)\) premise<br/>
+                    3 \(p \wedge r\) \(¬¬E(2)\)<br/>
+                    4 \(¬¬p\) \(¬¬I(1)\)<br/>
+                    5 \(r\) \(\wedge E(3)\)<br/>
+                    6 \(¬¬p \wedge r\) \(\wedge I(4, 5)\)<br/>
+                </div>
+            </li>
+            
+            <li>
+                From a contradiction, anything follows. If we end up with contradictory premises, then the situation we have created is not a real one. Therefore, we can infer anything from a contradictory premise.
+                <br/>
+                To better illustrate this, suppose we have two premises \(\phi\) and \(¬\phi\) and suppose we want to show \(\psi\). Then we know \(\psi \vee \phi\) to be true as \(\phi\) is true. Since \(¬\phi\) is true, it must be that \(\psi\) is true. Here we have prove \(\psi\) using a formula it has no relation to.
+            </li>
+
+            <li>
+                Rules for \(\bot\)<br/>
+
+                <ul>
+                    <li>
+                        \(\bot\)-introduction:
+
+                        <div class="box">
+                            1 \(\phi\) already proven<br/>
+                            2 \(¬\phi\) already proven<br/>
+                            3 \(\bot\) \(\bot I(1, 2)\)<br/>
+                        </div>
+                    </li>
+
+                    <li>
+                        \(\bot\)-elimination (i.e. from a contradiction, anything follows):
+
+                        <div class="box">
+                            1 \(\bot\) already proven<br/>
+                            2 \(\phi\) \(\bot E(1)\)
+                        </div>
+                    </li>
+                </ul>
+
+                <br/>
+
+                E.g. show that \(¬p \vee q \vdash p \rightarrow q\) is valid.
+
+                <div class="box">
+                    1 \(¬p \vee q\) premise<br/>
+                    
+                    <div class="box">
+                        2 \(p\) asm<br/>
+                        
+                        <div class="box">
+                            3 \(¬p\) asm<br/>
+                            4 \(\bot\) \(\bot I(2, 3)\)<br/>
+                            5 \(q\) \(\bot E(4)\)<br/>
+                        </div>
+
+                        <div class="box">
+                            6 \(q\) asm<br/>
+                        </div>
+
+                        7 \(q\) \(\vee E(1, 3 - 5, 6)\)
+                    </div>
+
+                    7 \(p \rightarrow q\) \(\rightarrow I(2, 7)\)
+                </div>
+            </li>
+
+            <li>
+                Rules for \(\top\): \(\top\) can be introduced anywhere. Nothing new can be proven from \(\top\)
+            </li>
+
+            <li>
+                Derived rules are rules derived from the rules given by introducing or eliminating the Boolean connectives. The Law of Excluded Middle and the double negation rules are derived. The following is a list of common derived laws, which we will denote DL:
+
+                <ul>
+                    <li>
+                        Double negation elimination: we have already seen this, and one proof of it is shown below.
+
+                        <div class="box">
+                            1 \(\phi\) premise<br/>
+                            
+                            <div class="box">
+                                2 \(¬\phi\) asm<br/>
+                                3 \(\bot\) \(¬E(1,2)\)<br/>
+                            </div>
+                            4 \(¬¬\phi\) \(¬I (2, 3)\)
+                        </div>
+                    </li>
+
+                    <li>
+                        Modus Tollens: from \(\phi \rightarrow \psi\) we have \(¬\psi\) derive \(¬\phi\).
+
+                        <div class="box">
+                            1 \(\phi \rightarrow \psi\) already proven<br/>
+                            2 \(...\)<br/>
+                            3 \(¬\psi\) now proven<br/>
+                            4 \(¬\phi\) \(MT(1,3)\)
+                        </div>
+                    </li>
+
+                    <li>
+                        Proof by contradiction: proof by contradiction is a combination of \(¬I\) and \(¬¬\).
+
+                        <div class="box">
+                            <div class="box">
+                                1 \(¬\phi\) asm<br/>
+                                2 \(...\) <br/>
+                                3 \(\bot\) <br/> 
+                            </div>
+                            4 \(\phi\) \(PC(1,3)\)
+                        </div>
+                    </li>
+
+                    <li>
+                        Law of Excluded Middle: \(\phi \vee ¬\phi\) is always true regardless of the value of \(\phi). Therefore we can always carry out proof by cases (\(\vee\) elimination). \(\phi \vee ¬\phi\) is an example of a lemma - something that should be proven that helps us prove something else. While we would strictly need to prove \(\phi \vee ¬\phi\) to be a valid formula, it is very well known so we will not do this in this course.
+                    </li>
+
+                    <li>
+                        Rules for bi-directional implication: \(\leftrightarrow\) introduction.
+
+                        <div class="box">
+                            1 \(\phi \leftrightarrow \psi\) already proven<br/>
+                            2 \(\psi \rightarrow \phi\) already proven<br/>
+                            3 \(\phi \leftrightarrow \psi\) \(\leftrightarrow I(1,2)\)
+                        </div>
+                    </li>
+
+                    <li>
+                        Rules for bi-directional implication: bidirectional implication elimination.
+
+                        <div class="box">
+                            1 \(\phi \leftrightarrow \psi\) already proven<br/>
+                            2 \(\phi\) <br/>
+                            3 \(\psi\) \(\leftrightarrow E(1,2)\)
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                Natural deduction proof - the single turnstile operation means "is provable by natural deduction". E.g. if we write \(\phi_1, ..., \phi_n \vdash \psi\) then we can say that \(\psi\) is provable from \(\phi_1, ..., \phi_n\). \(\vdash \psi\) means that \(\psi\) is provable from no premises at all - in other words, it is a theorem. Note the difference betwen \(\vdash\) and \(\models\), the former is syntctic and the latter is semantic.
+            </li>
+
+            <li>
+                Boxes in natural deduction - each box starts with an assumption, that is only true in the box. No formula inside a box can be used outside a box, since al formulas in the box are true under the assumption, but all previous formulas outside the box can be used in the box.
+            </li>
+
+            <li>Soundness and completeness - a proof system is sound if every theorem (i.e. a formula \(\phi\) such that \(\vdash \phi\)) is valid, and is complete if every valid formula is a theorem.</li>
+
+            <li>Natural deduction is sound - i,e, if \(\phi_1, ..., \phi_n, \psi\) are propositional formulas such that \(\phi_1, ..., \phi_n \vdash \psi\) then \(\phi_1, ..., \phi_n \models \psi\).</li>
+
+            <li>Natural deduction is complete - i.e. if \(\phi_1, ..., \phi_n, \psi\) are propositional formulas and \(\phi_1, ..., \phi_n \models \psi\) then \(\phi_1, ..., \phi_n \vdash \psi\), i.e. "any propositional validity can be proved".</li>
+
+            <li>Difference between soundness and completeness - if a proof system is sound then "anything that can be proved is a valid propositional formula" whereas if a proof system is complete then "any valid propositional formula can be proved".</li>
+
+            <li>Consistency - a formula \(\phi\) is said to be consistent if \(¬(\vdash ¬\phi)\), i.e. if it \(¬phi\) cannot be shown from no premises. A formula is consistent if and only if it is satisfiable (because then \(¬\phi\) is not semantically valid, so cannot be proven because of soundness and completeness).</li>
+        
+            <li>Provable equivalence - two propositional formulas, \(\phi\) and \(\psi\) are provably equivalent if and only of \(\phi \vdash \psi\) and \(\psi \vdash \psi\). This may be written as \(\phi \dashv \vdash \psi\). Two formulas are provably equivalent if and only if they are semantically equivalent.</li>
+        </ul>
+    </body>
+</html>

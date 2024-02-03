@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Computing Notes
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./../../main.css">
+        
+        <script src="mathjax-config.js" defer></script>
+        <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    </head>
+
+    <body>
+        <h1>Predicate Logic Syntax</h1>
+
+        <ul>
+            <li>
+                There are six syntactic features of predicate logic:
+
+                <ol>
+                    <li>Predicates (these take objects arguments and return a true or false value)</li>
+                    <li>Constants (identifiers assigned to objects)</li>
+                    <li>Variables (identifiers which can take the value of any object)</li>
+                    <li>Quantifiers (for all \(\forall\) and there exists \(\exists\))</li>
+                    <li>Functions (these take arguments and return objects)</li>
+                    <li>Equality</li>
+                </ol>
+            </li>
+
+            <li>Objects are simply jsut elements defined in a predicate logic.</li>
+
+            <li>
+                Predicate symbols - predicate symbols describe properties of and relations between objects.
+            </li>
+
+            <li>Constants - names assigned to objects</li>
+
+            <li>Quantifiers - the quantifiers in predicate logic are for all \(\forall\) and there exists \(\exists\). E.g. if we wanted to write that all objects are students (i.e. satisfy the student predicate) we would write \(\forall x student(x)\). "Frank has a student friend" can be written as \(\exists x(student(x) \wedge friend(frank, x))\).</li>
+
+            <li>Functions - functions take objects as arguments and return objects.</li>
+
+            <li>Equality - two symbols are the same if they refer to the same objects.</li>
+
+            <li>Signature - the signature of a predicate logic, is a triple \(\langle K, F, P \rangle\) where \(K\) is a (possibly empty) set of constants, \(F\) is a possibly empty set of function symbols and \(P\) is a set of predicate symbols.</li>
+
+            <li>
+                Term - a term is:
+
+                <ol>
+                    <li>Any constant in \(L\) is an \(L\)-term.</li>
+                    <li>Any variable is an \(L\)-term.</li>
+                    <li>If \(f\) is an \(n\)-ary function symbol in \(L\) and \(\t_1, ..., t_n) are \(L-terms\) then f(t_1, ..., t_n) is an \(L-term\).</li>
+                    <li>Nothing else is an \(L-terms\).</li>
+                </ol>
+            </li>
+
+            <li>A closed term, also called a ground term, is one that doesn't involve a variable.</li>
+
+            <li>
+                Formula - a formula is:
+
+                <ol>
+                    <li>If \(R\) is an \(n\)-ary predicate symbol in \(L\), and \(t_1, ..., t_n\) then \(R(t_1, ..., t_n)\) is an atomic \(L\)-formula.</li>
+                    <li>If \(t, t'\) are \(L\)-terms then \(t = t'\) is an atomic \(L-formula\).</li>
+                    <li>\(\top\) and \(\bot\) are atomic \(L\)-formulas.</li>
+                    <li>If \(\phi\) and \(\psi\) are \(L\)-formulas then so are (¬\phi), \(\phi \wedge \psi\), \(\phi \vee \psi\), \(\phi \rightarrow \psi\), \(\phi \leftrightarrow \psi\).</li>
+                    <li>If \(\phi\) is an \(L\)-formula and \(x\) is a variable, then \(\forall x \phi\) and \(\exists x \phi\) are \(L-formulas\).</li>
+                    <li>Nothing else is an \(L-formula\).</li>
+                </ol>
+            </li>
+
+            <li>Difference between a term and a formula - remember that a term evaluates to an object and a formula evaluates to a Boolean value.</li>
+
+            <li>Atomic formula - an atomic formula is a predicate symbol with arguments filled in with terms, e.g. \(Lecturer(susan)\), \(PC(x)\), etc.</li>
+
+            <li>Literal - a literal is an atomic formula or its negation.</li>
+
+            <li>Sentence - a sentence is a formula with all variabls in the scope of a quantifier, e.g. \(\forall x \forall y Bought(x, y)\).</li>
+
+            <li>\(\forall x\) and \(\exist x\) have the same strength as \(¬\) in the binding conventions.</li>
+        </ul>
+    </body>
+</html>

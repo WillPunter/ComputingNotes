@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Computing Notes
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./../../main.css">
+        
+        <script src="mathjax-config.js" defer></script>
+        <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    </head>
+
+    <body>
+        <h1>Translation of Predicate Logic</h1>
+
+        <ul>
+            <li>
+                Translation of quantifiers - \(\forall\) translates to "for all" or "every". \(\exists\) translates to "there exists" or "for some".
+            </li>
+
+            <li>
+                Translation of variables - variables should not be used in the English translation of a formula. Rather than using the variable names, we should use the word for the object they represent.
+            </li>
+
+            <li>
+                Examples:
+
+                <ul>
+                    <li>"All lecturers are human" \(\equiv \forall x (Lecturer(x) \rightarrow Human(x))\)</li>
+                    <li>"Some lecturer is human" \(\equiv \exists x (Lecturer(x) \wedge Human(x))\)</li>
+                    <li>"Frank bought a PC" \(\equiv \exists x (PC(x) \wedge Bought(Frank, x))\)</li>
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>

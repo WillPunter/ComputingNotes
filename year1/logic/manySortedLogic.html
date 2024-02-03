@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Computing Notes
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./../../main.css">
+        
+        <script src="mathjax-config.js" defer></script>
+        <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    </head>
+
+    <body>
+        <h1>Many Sorted Logic</h1>
+
+        <ul>
+            <li>
+                Sorts and types - in many-sorted logic every oject has a sort. A sort is similar to a data type in programing. Each object can have only one sort. In many-sorted logic, we need to fix a collection of sorts in our \(L\)-system. These sorts cannot generate extra sorts, for example just because we have defined sorts \(s\) and \(s'\) we have not defined \(s \rightarrow s'\). We need to define the types of our functions separately.
+            </li>
+
+            <li>
+                Objects in \(L\)-structures - each variable and constant comes with a sort \(s\). Each function and predicate symbol comes with a template defining the sorts of the arguments and, in the case of a function, the return value must have a sort. The arguments of a function or predicate must be of the correct sorts for the expression to be a term / formula (respectively).
+            </li>
+
+            <li>
+                Equality and sorts - for two objects to be compared via equality then the objects must both have the same sorts.
+            </li>
+
+            <li>
+                Sorts of a variable - we have to denote the sort of each variable we use. This is done with a :, e.g. \(\forall x: s \phi\) indicating that \(x\) will take the value of every object of sort \(s\).
+            </li>
+
+            <li>
+                Interpretation of \(L\)-symbols in \(L\)-structures:
+
+                <ul>
+                    <li>For each constant \(c : s\) in \(L\), \(M\) must say which object of sort \(s\) in \(dom(M)\) is named by \(c\).</li>
+                    <li>For each function symbol \(f : (s_1, ..., s_n) \rightarrow s\) in \(L\) and all objects \(a_1, ..., a_n\) in \(dom(M)\) of sorts \(s_1, ..., s_n\) respectively, \(M\) must say which object \(f_M(a_1, ..., a_n)\) of sort \(s\) is associated with \(a_1, ..., a_n\) by \(f\). In other words, the arguments must all have the correct sorts, and all combinations of arguments should be defined.</li>
+                    <li>For each relation symbol \(R(s_1, ..., s_n)\) in \(L\) and all objects \(a_1, ..., a_n\) in \(dom(M)\) of sorts \(s_1, ..., s_n\) respectively, \(M\) must say whether \(R(a_1, ..., a_n)\) is true or not.</li>
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>
